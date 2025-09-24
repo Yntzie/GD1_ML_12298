@@ -33,7 +33,7 @@ Notebook latihan ini membangun dan memvisualisasikan model **Perceptron** serta 
 ### 1) Clone repository
 
 ```bash
-git clone https://github.com/Yntzie/iris-perceptron-adaline.git
+git clone git@github.com:Yntzie/GD1_ML_12298.git
 cd iris-perceptron-adaline
 ```
 
