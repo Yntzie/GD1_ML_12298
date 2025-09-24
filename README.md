@@ -26,16 +26,14 @@ Notebook latihan ini membangun dan memvisualisasikan model **Perceptron** serta 
 - `matplotlib`
 - (opsional) `scikit-learn` – bila ingin memakai utilitas split/standardisasi siap pakai
 
-> Jika Anda sudah memiliki `requirements.txt`, cukup jalankan `pip install -r requirements.txt` (lihat bagian Instalasi).
-
 ---
 
 ## Cara Clone & Instalasi
 
 ### 1) Clone repository
-Ganti `<username>` dan nama repo sesuai milik Anda.
+
 ```bash
-git clone https://github.com/<username>/iris-perceptron-adaline.git
+git clone https://github.com/Yntzie/iris-perceptron-adaline.git
 cd iris-perceptron-adaline
 ```
 
@@ -58,13 +56,6 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-### 3) Instal dependensi
-Jika Anda punya **requirements.txt** di repo:
-```bash
-pip install --upgrade pip
-pip install -r requirements.txt
-```
-
 Jika belum punya `requirements.txt`, instal paket minimal berikut:
 ```bash
 pip install --upgrade pip
@@ -72,8 +63,6 @@ pip install numpy pandas matplotlib
 # opsional (jika ingin pakai utilitas sklearn):
 pip install scikit-learn
 ```
-
-> **Tips VS Code**: pastikan interpreter menunjuk ke venv (`.venv`). Tekan `Ctrl+Shift+P` → *Python: Select Interpreter* → pilih `.venv`.
 
 ---
 
@@ -94,81 +83,3 @@ Buka file notebook Anda (mis. `iris_perceptron_adaline.ipynb`).
 3. Pilih kernel dari venv `.venv` bila diminta.
 
 ---
-
-## Data
-- Dataset: **Iris** dari UCI Machine Learning Repository.  
-  Link referensi: https://archive.ics.uci.edu/ml/datasets/iris  
-- Notebook umumnya akan memuat CSV (mis. `iris.csv`) atau langsung mengambil dari `sklearn.datasets`.  
-- Untuk mengikuti visualisasi 2D pada notebook, gunakan subset **Setosa vs Versicolor** dan fitur **sepal length** & **petal length** saja.
-
-Contoh muat data (CSV lokal):
-```python
-import pandas as pd
-df = pd.read_csv("iris.csv")
-```
-
-Contoh muat data (dari `sklearn` lalu ubah ke DataFrame):
-```python
-from sklearn import datasets
-import pandas as pd
-
-iris = datasets.load_iris(as_frame=True)
-df = iris.frame  # kolom: sepal length, sepal width, petal length, petal width, target
-```
-
----
-
-## Struktur Kode (ringkas)
-Di awal notebook biasanya terdapat impor berikut:
-```python
-import numpy as np
-import os
-import pandas as pd
-import matplotlib.pyplot as plt
-```
-Bagian berikutnya meliputi:
-- **Pra‑proses**: filter kelas (Setosa vs Versicolor), pilih 2 fitur, standardisasi (untuk Adaline).
-- **Model**: implementasi Perceptron, AdalineGD, AdalineSGD (kelas custom).
-- **Training & Evaluasi**: plot error/loss per epoch, plot **decision boundary**.
-- **Prediksi**: uji titik baru dengan 3 model di atas.
-
----
-
-## Troubleshooting
-- **`Import "matplotlib.pyplot" could not be resolved from source`**  
-  - Pastikan `matplotlib` terinstal di **venv yang aktif**: `pip show matplotlib`  
-  - Jika belum ada: `pip install matplotlib` lalu **restart kernel** Jupyter/VS Code.  
-  - Di VS Code, pastikan kernel/Interpreter mengarah ke `.venv`.
-
-- **Paket tidak ditemukan** (`ModuleNotFoundError`)  
-  - Cek apakah venv aktif (prompt berawalan `(.venv)`).
-  - Jalankan `pip install <nama-paket>` di terminal yang sama dengan kernel.
-
-- **Grafik tidak muncul di Jupyter**  
-  - Pastikan sel telah dijalankan berurutan.  
-  - Di notebook klasik, Anda bisa menambahkan:  
-    ```python
-    %matplotlib inline
-    ```
-
----
-
-## Contoh `requirements.txt` (opsional)
-Jika Anda ingin file `requirements.txt`, isi minimalnya:
-```
-numpy
-pandas
-matplotlib
-# opsional:
-scikit-learn
-```
-
----
-
-## Lisensi
-Pilih lisensi sesuai kebutuhan (mis. MIT).
-
----
-
-## Kredit
-Notebook ini merangkum topik **Perceptron** dan **Adaline (GD & SGD)** pada dataset **Iris** untuk tujuan pembelajaran dan visualisasi 2D.
